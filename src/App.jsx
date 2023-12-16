@@ -6,6 +6,7 @@ import './App.css'
 
 //components
 import Navbar from './components/Navbar/Navbar'
+import LandingPage from './components/LandingPage/LandingPage'
 import { BrowserRouter } from 'react-router-dom'
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className=' relative z-0  bg-[#c4cecb] min-h-screen'>
-          <Navbar />
+        <div className=' z-0  bg-[#c4cecb] min-h-screen'>
+          <LandingPage />
         </div>
       </BrowserRouter>
 
