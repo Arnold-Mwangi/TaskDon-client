@@ -10,7 +10,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 `}>
+        <nav className={`${styles.paddingX} w-full flex items-center py-5 sticky top-0 z-20 text-white`}>
             <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
                 <Link to="/"
                     className='flex items-center gap-2'
@@ -18,7 +18,7 @@ const Navbar = () => {
                         setActive('false')
                         window.scrollTo(0, 0);
                     }}>
-                    <img src={logo1} alt="Logo" className='w-15 h-14 object-contain sm: w-15 h-12' />
+                    <img src={logo1} alt="Logo" className='w-15 h-14 object-contain sm:w-15 h-12' />
                     <p className='text-[18px] font-bold cursor-pointer -flex smflex  text-[#000000]'>Taskers Bid&nbsp;
                         <span className='sm:block hidden'>
                             | Students Soar
