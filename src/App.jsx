@@ -8,6 +8,7 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import LandingPage from './components/LandingPage/LandingPage'
 import { BrowserRouter } from 'react-router-dom'
+import Hero from './components/Hero/Hero'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,8 +16,15 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className=' z-0  bg-[#c4cecb] min-h-screen'>
-          <LandingPage />
+        <div className='z-0  bg-[#000000] min-h-screen text-white'>
+          <Navbar />
+          <div >
+            <LandingPage />
+            </div>
+          
+          <Hero />
+
+
         </div>
       </BrowserRouter>
 
