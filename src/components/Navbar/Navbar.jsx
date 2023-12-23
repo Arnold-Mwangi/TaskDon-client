@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { styles } from '../../../styles'
-import { logo1, logo2, menu, close } from '../../assets'
+import { logo, logo2, menu, close } from '../../assets'
 
 const Navbar = () => {
     const [active, setActive] = useState('')
@@ -10,7 +10,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className={`${styles.paddingX} w-full flex items-center py-5 sticky top-0 z-20 text-white`}>
+        <nav className={`${styles.paddingX} w-full flex items-center py-5 sticky top-0 z-20 text-white bg-black`}>
             <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
                 <Link to="/"
                     className='flex items-center gap-2'
@@ -18,7 +18,7 @@ const Navbar = () => {
                         setActive('false')
                         window.scrollTo(0, 0);
                     }}>
-                    <img src={logo1} alt="Logo" className='w-15 h-14 object-contain sm:w-15 h-12' />
+                    <img src={logo} alt="Logo" className='w-15 h-14 object-contain sm:w-15 h-12' />
                     <p className='text-[18px] font-bold cursor-pointer -flex smflex  text-[#000000]'>Taskers Bid&nbsp;
                         <span className='sm:block hidden'>
                             | Students Soar
@@ -50,12 +50,12 @@ const Navbar = () => {
                     <img
                         src={toggle ? close : menu}
                         alt="menu"
-                        className=' h-14 w-14 object-contain cursor-pointer'
+                        className=' h-10 w-14 object-contain cursor-pointer'
                         onClick={() => setToggle(!toggle)}
                     />
 
                     <div
-                        className={` ${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl bg-[#e94b33]`}
+                        className={` ${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-20 right-0 ml-4 my-2 w-9/12 z-10 rounded bg-[#fff] text-black text-base`}
                     >
                         <ul className='list-none flex justify-end items-start flex-col gap-4 text-3xl'>
                             <li
