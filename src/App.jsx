@@ -1,36 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import './App.css';
 
-
-//components
-import Navbar from './components/Navbar/Navbar'
-import LandingPage from './components/LandingPage/LandingPage'
-import { BrowserRouter } from 'react-router-dom'
-import Hero from './components/Hero/Hero'
+// Components
+import Navbar from './components/Navbar/Navbar';
+import LandingPage from './components/LandingPage/LandingPage';
+import Hero from './components/Hero/Hero';
+import Signup from './components/Authentication/Signup';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <BrowserRouter>
-        <div className='z-0  bg-[#000000] min-h-screen text-white'>
-          <Navbar />
-          <div >
-            <LandingPage />
-            </div>
-          
-          <Hero />
+      <div className="z-0 bg-[#000000] min-h-screen text-white">
+        <Router>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/signup" element={<Signup />} />
 
 
-        </div>
-      </BrowserRouter>
-
-
+          </Routes>
+        </Router>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
