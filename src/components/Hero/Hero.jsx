@@ -39,8 +39,8 @@ const Hero = () => {
                     <form
                         // onSubmit={handleSubmit(onSubmit)}
                         className='w-full max-w-sm'>
-                        <div className='flex flex-col sm:flex-row justify-center items-center mx-auto  items-center sm:border-b  border-teal-500 py-2'>
-                            <input className='appearance-none bg-transparent border-b sm:border-none border-teal-500 py-2 w-full text-[#68e55d] mr-3 py-1 px-2 font-mono font-courier leading-tight focus:outline-none' type='text' placeholder='Email Address' aria-label='Email' />
+                        <div className='flex flex-col sm:flex-row justify-center mx-auto  items-center sm:border-b  border-teal-500 py-2'>
+                            <input className='appearance-none bg-transparent border-b sm:border-none border-teal-500 w-full text-[#68e55d] mr-3 py-1 px-2 font-mono font-courier leading-tight focus:outline-none' type='text' placeholder='Email Address' aria-label='Email' />
 
                             <button 
                             onClick = {handleSignupClick}
