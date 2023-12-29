@@ -8,7 +8,7 @@ const LandingPage = () => {
     return (
         <div className='w-full overflow-hidden'>
             <Navbar />
-            <div className='relative container flex items-center py-5 max-w-7xl mx-auto h-'>
+            <div className='relative container flex items-center py-5 max-w-7xl mx-auto h-auto'>
 
 
                 <img
