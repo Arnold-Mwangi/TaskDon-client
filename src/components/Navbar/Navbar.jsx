@@ -1,16 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { styles } from '../../../styles'
 import { logo, logo2, menu, close } from '../../assets'
+import Signup from '../Authentication/Signup'
 
 const Navbar = () => {
     const [active, setActive] = useState('')
     const [toggle, setToggle] = useState(false)
 
+    const location = useLocation()
+    const { hash, pathname, search } = location
+
+
+
 
     return (
-        <nav className={`${styles.paddingX} w-full flex items-center py-5 sticky top-0 z-20 text-white bg-black`}>
+        <nav className={`${styles.paddingX} ${ pathname === '/signup' ?
+        'bg-transparent'
+        : ''} w-full flex items-center py-5 sticky top-0 z-20 text-white bg-black`}>
             <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
                 <Link to="/"
                     className='flex items-center gap-2'
@@ -18,8 +26,8 @@ const Navbar = () => {
                         setActive('false')
                         window.scrollTo(0, 0);
                     }}>
-                    <img src={logo} alt="Logo" className='w-15 h-14 object-contain sm:w-15 h-12' />
-                    <p className='text-[18px] font-bold cursor-pointer -flex smflex  text-[#000000]'>Taskers Bid&nbsp;
+                    <img src={logo} alt="Logo" className='w-20 h-16 object-contain sm:w-15' />
+                    <p className='text-[18px] font-bold cursor-pointer -flex smflex  text-[#ffffff]'>Taskers Bid&nbsp;
                         <span className='sm:block hidden'>
                             | Students Soar
                         </span>
@@ -27,10 +35,14 @@ const Navbar = () => {
 
                 </Link>
                 <ul className='list-none hidden sm:flex flex-row font-bold gap-10 mr-4'>
-                    <li className={`${active === 'signUp' ? 'border-b-4 border-[#e94b33]' : ''}`}
+                    <li className={`
+                    ${active === 'signUp' ?
+                            'border-b-4 border-[#e94b33]'
+                            : ''}
+                    `}
                         onClick={() => setActive('signUp')}>
                         <a href='#signup'>
-                            SignUp
+                            {pathname === '/signup' ? ' ' : 'Signup'}
                         </a>
                     </li>
                     <li className={`${active === 'aboutus' ? 'border-b-4 border-[#e94b33]' : ''}`}
