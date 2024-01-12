@@ -9,6 +9,7 @@ import Navbar from './components/Navbar/Navbar';
 import LandingPage from './components/LandingPage/LandingPage';
 import Hero from './components/Hero/Hero';
 import Signup from './components/Authentication/Signup';
+import Works from './components/Works/Works';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path='/works' element={<Works />} />
 
 
           </Routes>
