@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TypeWriter from './TypeWriter/Typewriter';
 import forms from './Resources/resources';
+import StarsCanvas from '../canvas/stars';
+import Navbar from '../Navbar/Navbar';
 
 import './signup.css';
 
@@ -46,7 +48,12 @@ const Signup = () => {
     const [showCompletedForm, setShowCompletedForm] = useState(false);
 
     const handleContinue = useCallback(() => {
-        setCurrentStep((prevStep) => prevStep + 1);
+        if (currentStep <= forms.length) {
+            setCurrentStep((prevStep) => prevStep + 1);
+        } else {
+            return
+        }
+
     }, []);
 
     const handleFormSubmit = useCallback(() => {
@@ -65,48 +72,73 @@ const Signup = () => {
     }, []);
 
     const renderForm = () => {
-        
+
         const form = forms[currentStep];
 
         return (
             <div className='flex flex-col'>
                 {Array.from(Array(currentStep)).map((_, index) => (
                     <React.Fragment key={index}>
-                        <input
-                            className='text-[#689b4c] cursor-text'
-                            type='text'
-                            name={forms[index].name}
-                            placeholder={forms[index].placeholder}
-                            value={formData[forms[index].name] || ''}
-                            onChange={handleInputChange}
-                            
-                        />
+
+
                         <span>&nbsp;</span>
+
+                        <div className="relative z-0 w-full mb-5 group">
+                            <input
+                                type="email"
+                                name={forms[index].name}
+                                id={form.name}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder={forms[index].placeholder}
+                                onChange={handleInputChange}
+                                value={formData[forms[index].name] || ''}
+                            />
+
+                        </div>
                     </React.Fragment>
                 ))}
                 {currentStep < forms.length && (
                     <>
-                        <div className='flex items-end'>
-                            <div className='flex flex-col'>
-                                <label className='text-[#3fcfc9]' for={form.name}>{form.name}</label>
-                                <input
-                                    type='text' className='bg-transparent text-[#689b4c]'
-                                    autoFocus
+                        <div className='md: flex md: items-end justify-between gap-2 '>
+                            <div className=' '>
 
-                                    name={form.name}
-                                    placeholder={form.placeholder}
-                                    onChange={handleInputChange}
-                                    value={formData[form.name] || ''}
-                                />
+
+                                <div className="relative z-0 w-full mb-5 group">
+                                    <input
+                                        type="email"
+                                        name={form.name}
+                                        id={form.name}
+                                        className="block text-center py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder=''
+                                        required
+                                        onChange={handleInputChange}
+                                        value={formData[form.name] || ''}
+                                    />
+                                    <label
+
+                                        for={form.name}
+                                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        {form.name}
+                                    </label>
+                                </div>
+
                             </div>
 
-                            <input
-                                type='button'
-                                name='continue'
-                                value='continue'
-                                className='cursor-pointer ml-5'
-                                onClick={handleContinue}
-                            />
+                            <div className='text-[#098776] ' >
+                                {currentStep !== forms.length - 1 ?
+
+                                    <input
+                                        type='button'
+                                        name='continue'
+                                        value='continue'
+                                        className='cursor-pointer ml-5 py-2.5 px-0'
+                                        onClick={handleContinue}
+                                    /> : ''
+                                }
+                            </div>
+
+
+                            {console.log(currentStep)}
                         </div>
 
                     </>
@@ -116,42 +148,47 @@ const Signup = () => {
     };
 
     return (
-        <div className='w-full mx-auto max-w-7xl relative align-middle'>
-            {/* <h1><TypeWriter text='testing type writer' delay={100 }/> </h1> */}
-            <div className='h-auto flex  items-center flex-col'>
-                <form className='flex flex-col my-24 border-b-1 border-[#1a2134] bg-[#0c162d] w-96 rounded shadow-sm shadow-stone-50 md:shadow-stone-50 z-50 overflow-y-auto'>
-                    <TypingText paragraphs={welcomeParagraphs} />
-                    {showCompletedForm ? (
-                        <div className='flex flex-col'>
-                            {/* Display the completed form */}
-                            <pre>{JSON.stringify(formData, null, 2)}</pre>
-                            {/* Action button for the completed form */}
-                            <input
-                                type='button'
-                                name='actionButton'
-                                value='Action'
-                                className='mt-4 px-4 py-2 bg-transparent text-white rounded cursor-pointer'
-                                onClick={() => setShowCompletedForm(false)}
-                            />
-                        </div>
-                    ) : (
-                        <div className='flex flex-col items-center'>
-                            {renderForm()}
-                            <div className='mt-4'>
-                                {/* Action button for the incomplete form */}
+        <div className='relative z-0 h-screen bg-[#040d21]'>
+            <Navbar />
+            <StarsCanvas />
+            <div className='w-full flex items-center justify-center mx-auto shrink max-w-7xl relative align-middle '>
+                {/* <h1><TypeWriter text='testing type writer' delay={100 }/> </h1> */}
+                <div className='h-auto flex  items-center flex-col'>
+                    <form className='flex flex-col my-24 border-2 border-[#202637] bg-[#0c162d] w-96 rounded  z-50 overflow-y-auto p-5'>
+                        <TypingText paragraphs={welcomeParagraphs} />
+                        {showCompletedForm ? (
+                            <div className='flex flex-col'>
+                                {/* Display the completed form */}
+                                <pre>ded{JSON.stringify(formData)}</pre>
+                                {/* Action button for the completed form */}
                                 <input
                                     type='button'
                                     name='actionButton'
-                                    value='Action'
-                                    className='px-4 py-2 bg-blue-500 text-white rounded cursor-pointer'
-                                    onClick={handleFormSubmit}
+                                    value='Edit Data'
+                                    className='mt-4 px-4 py-2 bg-transparent text-white rounded cursor-pointer'
+                                    onClick={() => setShowCompletedForm(false)}
                                 />
                             </div>
-                        </div>
-                    )}
-                </form>
+                        ) : (
+                            <div className='flex flex-col items-center'>
+                                {renderForm()}
+                                <div className='mt-4'>
+                                    {/* Action button for the incomplete form */}
+                                    <input
+                                        type='button'
+                                        name='actionButton'
+                                        value='Submit'
+                                        className='px-4 py-2 bg-blue-500 text-white rounded cursor-pointer'
+                                        onClick={handleFormSubmit}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                    </form>
+                </div>
             </div>
         </div>
+
     );
 };
 
