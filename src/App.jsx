@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <div className="z-0 bg-[#000000] min-h-screen text-white">
+      <div className="z-0 bg-[#0e1116] min-h-screen text-white">
         <Router>
           <Routes>
             <Route path="/" element={<LandingPage />} />
