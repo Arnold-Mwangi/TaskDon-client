@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import Hero from '../Hero/Hero';
+import Works from '../Works/Works';
 
 const LandingPage = () => {
     return (
@@ -30,6 +31,7 @@ const LandingPage = () => {
             </div>
 
             <Hero />
+            <Works />
         </div>
     );
 };

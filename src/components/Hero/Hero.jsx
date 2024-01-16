@@ -55,15 +55,9 @@ const Hero = () => {
                         </form>
                     </div>
 
-
-
-
-
-
                 </div>
 
-            </section>
-            <Works />
+            </section>         
         </>
 
 
