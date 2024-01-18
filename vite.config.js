@@ -5,12 +5,13 @@ import react from '@vitejs/plugin-react-swc'
 // export default defineConfig({
 //   plugins: [react()],
 // })
-export default defineConfig ({
+
+export default defineConfig({
   plugins: [react()],
   base: '/TaskDon-client',
   resolve: {
     alias: {
-      '@react-three/fiber': 'react-three-fiber'
-    }
-  }
+      // Remove the alias for @react-three/fiber
+    },
+  },
 })
