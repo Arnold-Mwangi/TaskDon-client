@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useContext , useCallback } from 'react';
 import TypeWriter from './TypeWriter/Typewriter';
 import forms from './Resources/resources';
 import StarsCanvas from '../canvas/stars';
 import Navbar from '../Navbar/Navbar';
+import { AuthContext } from './AuthContext/AuthContext';
+
 
 import './signup.css';
 
@@ -47,6 +49,8 @@ const Signup = () => {
     const [formData, setFormData] = useState({});
     const [showCompletedForm, setShowCompletedForm] = useState(false);
 
+    const authContext = useContext(AuthContext)
+
     const handleContinue = useCallback(() => {
         if (currentStep <= forms.length) {
             setCurrentStep((prevStep) => prevStep + 1);
@@ -60,6 +64,7 @@ const Signup = () => {
         // Perform any necessary actions with the form data
         // For now, just log the form data
         console.log(formData);
+        authContext.dispatch({ type: 'UPDATE_FORM_DATA', payload: formData})
 
         // Reset the form data and show the completed form
         setFormData({});
@@ -85,7 +90,7 @@ const Signup = () => {
 
                         <div className="relative z-0 w-full mb-5 group">
                             <input
-                                type="email"
+
                                 name={forms[index].name}
                                 id={form.name}
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -104,22 +109,40 @@ const Signup = () => {
 
 
                                 <div className="relative z-0 w-full mb-5 group">
-                                    <input
-                                        type="email"
-                                        name={form.name}
-                                        id={form.name}
-                                        className="block text-center py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                        placeholder=''
-                                        required
-                                        onChange={handleInputChange}
-                                        value={formData[form.name] || ''}
-                                    />
+                                    {form.type === 'select' ? (
+                                        <select
+                                        
+                                            name={form.name}
+                                            id={form.name}
+                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                            onChange={handleInputChange}
+                                            value={formData[form.name] || ''}
+                                        >
+                                            {form.options.map((option) => (
+                                                <option key={option} value={option}>
+                                                    {option}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    ) : (
+                                        <input
+                                            type={form.type}
+                                            name={form.name}
+                                            id={form.name}
+                                            className="block text-center py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                            
+                                            required={form.type !== 'select'}
+                                            onChange={handleInputChange}
+                                            value={formData[form.name] || ''}
+                                        />
+                                    )}
                                     <label
-
                                         for={form.name}
-                                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        {form.name}
+                                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                    >
+                                        {form.label}
                                     </label>
+
                                 </div>
 
                             </div>
@@ -148,7 +171,7 @@ const Signup = () => {
     };
 
     return (
-        <div className='relative z-0 h-screen bg-[#040d21]'>
+        <div className='relative z-0 h-full bg-[#040d21]'>
             <Navbar />
             <StarsCanvas />
             <div className='w-full flex items-center justify-center mx-auto shrink max-w-7xl relative align-middle '>
