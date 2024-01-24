@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
+import { AuthProvider } from './components/Authentication/AuthContext/AuthContext';
 
 // Components
 import Navbar from './components/Navbar/Navbar';
@@ -17,15 +18,18 @@ function App() {
   return (
     <>
       <div className="z-0 bg-[#0e1116] min-h-screen text-white">
-        <Router>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path='/works' element={<Works />} />
+        <AuthProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path='/works' element={<Works />} />
 
 
-          </Routes>
-        </Router>
+            </Routes>
+          </Router>
+        </AuthProvider>
+
       </div>
     </>
   );
