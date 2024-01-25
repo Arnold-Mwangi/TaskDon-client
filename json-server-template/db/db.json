@@ -1,18 +1,32 @@
 {
-"playlists": [
+  "users": [
     {
-      "id": "playlist1",
-      "name": "The Mics Are Open #213 I Parked The Trailer Downstairs",
-      "videos": [
-        {
-            
-        }
-      ]
+      "id": "545f",
+      "Email": "FEWGF3E",
+      "Password": "Q3RQ3",
+      "Confirm Password": "we3r3er",
+      "WhatsappNumber": "1213"
     },
     {
-      "id": "playlist2",
-      "name": "Playlist 2",
-      "videos": []
+      "id": "3b02",
+      "Email": "FEWGF3E",
+      "Password": "Q3RQ3",
+      "Confirm Password": "we3r3er",
+      "WhatsappNumber": "1213"
+    },
+    {
+      "id": "2e56",
+      "Email": "FEWGF3E",
+      "Password": "Q3RQ3",
+      "Confirm Password": "we3r3er",
+      "WhatsappNumber": "1213"
+    },
+    {
+      "id": "51f5",
+      "Email": "FEWGF3E",
+      "Password": "Q3RQ3",
+      "Confirm Password": "we3r3er",
+      "WhatsappNumber": "1213"
     }
   ]
 }
