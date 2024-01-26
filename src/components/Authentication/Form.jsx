@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const RenderForm = ({ currentStep, forms, formData, handleInputChange, handleFormSubmit }) => {
+
   const form = forms[currentStep];
+  const navigate = useNavigate()
+
+  const handleLogin = () => {
+    navigate('/login')
+  }
 
   return (
     <div className="flex flex-col">
@@ -63,13 +70,21 @@ const RenderForm = ({ currentStep, forms, formData, handleInputChange, handleFor
           </label>
         </div>
       ))}
-      <div className="mt-4">
+      <div className="mt-4 flex flex-col items-center gap-5 ">
         <input
           type="submit"
           name="actionButton"
           value="Submit"
           className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
         />
+        <div>
+            <p>Already have an Account? 
+                &nbsp;
+                 <a
+                 onClick = {handleLogin}
+                 className="text-blue-500 underline underline-offset-2"
+                  href="#">Login</a></p>
+        </div>
       </div>
     </div>
   );
