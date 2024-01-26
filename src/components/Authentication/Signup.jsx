@@ -49,12 +49,13 @@ const Signup = () => {
             <Navbar />
             <StarsCanvas />
             <div className='w-full flex items-center justify-center mx-auto shrink max-w-7xl relative align-middle '>
-                <div className='h-auto flex items-center flex-col'>
+                <div className='h-auto flex items-center flex-col w-full sm:w-96'>
+                <TypingText paragraphs={welcomeParagraphs} />
                     <form
-                        className='flex flex-col my-24 border-2 border-[#202637] bg-[#0c162d] sm:w-screen md:w-96 rounded  z-50 overflow-y-auto p-5'
+                        className='flex flex-col md:my-24 border-2 border-[#202637] bg-[#0c162d] w-full md:w-96 rounded  z-50 overflow-y-auto p-5'
                         onSubmit={handleFormSubmit}
                     >
-                        <TypingText paragraphs={welcomeParagraphs} />
+                        
                         {showCompletedForm ? (
                             <div className='flex flex-col'>
                                 <pre>ded{JSON.stringify(formData)}</pre>
