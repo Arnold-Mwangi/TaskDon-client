@@ -45,14 +45,14 @@ const Signup = () => {
     }, [setFormData]);
 
     return (
-        <div className='relative z-0 h-full bg-[#040d21]'>
+        <div className='relative z-0 h-screen bg-[#040d21]'>
             <Navbar />
             <StarsCanvas />
             <div className='w-full flex items-center justify-center mx-auto shrink max-w-7xl relative align-middle '>
                 <div className='h-auto flex items-center flex-col w-full sm:w-96'>
                 <TypingText paragraphs={welcomeParagraphs} />
                     <form
-                        className='flex flex-col md:my-24 border-2 border-[#202637] bg-[#0c162d] w-full md:w-96 rounded  z-50 overflow-y-auto p-5'
+                        className='flex flex-col md:my-24 md:border-2 border-[#202637] bg-transparent md:bg-[#0c162d] w-full md:w-96 rounded  z-50 overflow-y-auto p-5'
                         onSubmit={handleFormSubmit}
                     >
                         
