@@ -4,6 +4,7 @@ import menu from  './menu_btn.svg'
 import close from  './close_btn.svg'
 import logo from './logo.png'
 import success from './success.svg'
+import success1 from './success1.svg'
 
 export {
     logo1,
@@ -11,5 +12,6 @@ export {
     menu,
     close,
     logo,
-    success
+    success,
+    success1,
 };
