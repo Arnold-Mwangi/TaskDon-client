@@ -21,7 +21,7 @@ export const Login: React.FC = () => {
     const isMediumScreen = useMediaQuery({ maxWidth: 768 });
 
     const navigate = useNavigate()
-    
+
 
     const handleRegister = () => {
         navigate('/signup')
@@ -95,7 +95,7 @@ export const Login: React.FC = () => {
                             {/* username */}
                             <div className="relative  mb-4" dT-te-input-wrapper-init>
                                 <input
-                                {...formik.getFieldProps('email')}
+                                    {...formik.getFieldProps('email')}
 
                                     type="text"
                                     value={formik.values.email}
@@ -108,9 +108,13 @@ export const Login: React.FC = () => {
                                 )}
                                 <label
                                     htmlFor="exampleFormControlInput1"
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                                >Username
+                                    className={`pointer-events-none absolute left-3 top-[-0.7rem] 
+                                    text-[#68e55d] transition-all duration-200 ease-out 
+                            ${formik.values.email || formik.touched.email ? '-translate-y-[0.9rem] scale-[0.8] text-primary' : ''}`}
+                                >
+                                    Username
                                 </label>
+
                             </div>
                             {/* Password input */}
                             <div className="relative mb-4" data-te-input-wrapper-init>
@@ -126,9 +130,11 @@ export const Login: React.FC = () => {
                                     <div className="error">{formik.errors.password}</div>
                                 )}
                                 <label
-                                    htmlFor="exampleFormControlInput11"
-                                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                                >Password
+                                    htmlFor="exampleFormControlInput1"
+                                    className={`pointer-events-none absolute left-3 top-[-0.7rem] text-[#68e55d]transition-all duration-200 ease-out 
+                            ${formik.values.email || formik.touched.email ? '-translate-y-[0.9rem] scale-[0.8] text-primary' : ''}`}
+                                >
+                                    Password
                                 </label>
                             </div>
 
