@@ -67,7 +67,7 @@ const Navbar = () => {
                     />
 
                     <div
-                        className={` ${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-20 right-0 ml-4 my-2 w-9/12 z-10 rounded bg-[#fff] text-black text-base`}
+                        className={` ${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-20 right-0 ml-4 my-2 w-9/12  rounded bg-[#fff] z-[100] text-black text-base`}
                     >
                         <ul className='list-none flex justify-end items-start flex-col gap-4 text-3xl'>
                             <li
